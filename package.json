@@ -4,7 +4,8 @@
   "description": "Web Development using AngularJS",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "mocha -r tests/testhelper.js -R spec tests/**/*.test.js"
   },
   "keywords": [
     "MongoDB",
@@ -32,9 +33,5 @@
     "sinon-chai": "~2.8.0",
     "sinon": "~1.17.4",
     "proxyquire": "~1.7.9"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "test": "mocha -r tests/testhelper.js -R spec tests/**/*.test.js"
   }
 }
