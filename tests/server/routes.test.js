@@ -9,7 +9,7 @@ describe('Routes', function() {
     delete: sinon.spy()
   };
   beforeEach(function() {
-    routes(app);
+    app(routes);
   });
 });
 

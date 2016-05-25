@@ -8,7 +8,8 @@ var path = require('path'),
   methodOverride = require('method-override'),
   errorHandler = require('errorhandler'),
   moment = require('moment'),
-  multer = require('multer');
+  multer = require('multer'),
+  fs = require('fs');
 
 module.exports = function(app) {
   app.use(morgan('dev'));
@@ -25,6 +26,14 @@ module.exports = function(app) {
   app.use(cookieParser('some-secret-value-here'));
 
   routes(app); // moving the routes to routes folder.
+
+  // Ensure the temporary upload folders exist
+  fs.mkdir(path.join(__dirname, '../public/upload'), function(err) {
+    console.log(err);
+    fs.mkdir(path.join(__dirname, '../public/uploadtemp'), function(err) {
+      console.log(err);
+    });
+  })
 
   app.use('/public/', express.static(path.join(__dirname, '../public')));
 
